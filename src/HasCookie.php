@@ -10,6 +10,11 @@ use Weijiajia\SaloonphpCookiePlugin\Contracts\CookieJarInterface;
 trait HasCookie
 {
     protected ?GuzzleCookieJarInterface $cookieJar = null;
+    
+    public function isCookieEnabled(): bool
+    {
+        return true;
+    }
 
     public function bootHasCookie(PendingRequest $pendingRequest): void
     {
@@ -24,6 +29,10 @@ trait HasCookie
         $cookieJar = $request instanceof CookieJarInterface 
             ? $request->getCookieJar() 
             : $connector->getCookieJar();
+
+        if (! $this->isCookieEnabled()) {
+            return;
+        }
 
         $pendingRequest->getConnector()->config()->add('cookies', $cookieJar);
 
