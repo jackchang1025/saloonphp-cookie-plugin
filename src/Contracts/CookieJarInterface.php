@@ -7,6 +7,4 @@ interface CookieJarInterface
 {
     public function getCookieJar(): ?GuzzleCookieJarInterface;
 
-    public function isCookieEnabled(): bool;
-
 }

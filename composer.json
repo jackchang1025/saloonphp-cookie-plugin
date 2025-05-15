@@ -9,13 +9,20 @@
             "Weijiajia\\SaloonphpCookiePlugin\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Weijiajia\\SaloonphpCookiePlugin\\Tests\\": "tests/",
+            "Tests\\": "tests/" 
+        }
+    },
     "require": {
         "php": ">=8.0",
         "saloonphp/saloon": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0|^10.0",
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "pestphp/pest": "3.x-dev",
+        "symfony/var-dumper": "7.3.x-dev"
     },
     "authors": [
         {
@@ -25,11 +32,14 @@
     ],
     "minimum-stability": "dev",
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
  
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "vendor/bin/pest",
         "fix-style": "vendor/bin/php-cs-fixer fix"
     }
 }
